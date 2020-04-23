@@ -65,7 +65,7 @@ class App extends Component {
           {contacts.length > 1 && <Filter onChange={this.changeHandler} />}
           <ContactList
             contacts={this.filterContactsByName()}
-            deleteContactbyId={this.deleteContactbyId}
+            onDelete={this.deleteContactbyId}
           />
         </Section>
       </>
