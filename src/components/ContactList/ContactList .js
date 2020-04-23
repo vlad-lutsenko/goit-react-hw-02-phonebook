@@ -21,10 +21,16 @@ const ContactList = ({ contacts, deleteContactbyId }) => {
 };
 
 ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.string.isRequired).isRequired
-  ).isRequired,
+  contacts: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+      })
+    ),
+    PropTypes.array,
+  ]),
   deleteContactbyId: PropTypes.func.isRequired,
 };
-
 export default ContactList;
