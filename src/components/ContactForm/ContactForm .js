@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import styles from "./ContactForm.module.css";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -40,33 +41,37 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.submitHandler}>
-        <label>
-          Name
-          <br />
+      <form onSubmit={this.submitHandler} className={styles.contactForm}>
+        <label htmlFor="nameInput">
+          Name:
           <input
             type="text"
             name="name"
             value={name}
             placeholder="enter name..."
             onChange={this.changeHandler}
-            required
+            id="nameInput"
           />
         </label>
-        <br />
-        <label>Number</label>
-        <br />
-        <input
-          type="tel"
-          name="number"
-          value={number}
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          placeholder="xxx-xxx-xxxx"
-          onChange={this.changeHandler}
-          required
-        ></input>
-        <br />
-        <button type="submit">Add contact</button>
+
+        <label htmlFor="numberInput">
+          Number:
+          <input
+            type="tel"
+            name="number"
+            value={number}
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="xxx-xxx-xxxx"
+            onChange={this.changeHandler}
+            id="numberInput"
+          />
+        </label>
+        <button
+          type="submit"
+          disabled={name.length && number.length ? false : true}
+        >
+          Add contact
+        </button>
       </form>
     );
   }

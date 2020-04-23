@@ -24,12 +24,10 @@ class App extends Component {
   };
 
   deleteContactbyId = (id) => {
-    const contacts = this.state.contacts;
-    const contactsWithoutDeleted = contacts.filter(
-      (contact) => contact.id !== id
-    );
+    const { contacts } = this.state;
+    const updatedContacts = contacts.filter((contact) => contact.id !== id);
     this.setState({
-      contacts: [...contactsWithoutDeleted],
+      contacts: [...updatedContacts],
     });
   };
 
@@ -57,8 +55,7 @@ class App extends Component {
   };
 
   render() {
-    const contacts = this.state.contacts;
-    console.log(contacts);
+    const { contacts } = this.state;
     return (
       <>
         <Section title="Phonebook">
