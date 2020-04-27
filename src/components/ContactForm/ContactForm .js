@@ -60,16 +60,12 @@ class ContactForm extends Component {
             type="tel"
             name="number"
             value={number}
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            placeholder="xxx-xxx-xxxx"
+            placeholder="enter number..."
             onChange={this.changeHandler}
             id="numberInput"
           />
         </label>
-        <button
-          type="submit"
-          disabled={name.length && number.length ? false : true}
-        >
+        <button type="submit" disabled={!name.length || !number.length}>
           Add contact
         </button>
       </form>

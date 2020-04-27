@@ -4,6 +4,9 @@ import ContactForm from "./ContactForm/ContactForm ";
 import ContactList from "./ContactList/ContactList ";
 import Filter from "./Filter/Filter";
 
+import { toast, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 class App extends Component {
   state = {
     contacts: [
@@ -37,7 +40,13 @@ class App extends Component {
       contact.name.toLowerCase()
     );
     if (names.includes(newName.toLowerCase().trim())) {
-      alert(`${newName} is already in contact list`);
+      toast.configure();
+      toast.error(`${newName} is already in contact list`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 8000,
+        delay: 200,
+        transition: Zoom,
+      });
     } else {
       this.setState((state) => ({
         contacts: [...state.contacts, contact],
